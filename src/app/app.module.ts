@@ -4,11 +4,11 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { RouterModule } from '@angular/router';
 import { removeNgStyles, createNewHosts } from '@angularclass/hmr';
-import { HttpModule }    from '@angular/http';
+import { Configuration } from './maze/maze.constants';
+import { HTTP_PROVIDERS } from '@angular/http';
 // import { InMemoryWebApiModule } from 'angular2-in-memory-web-api';
 // import { InMemoryDataService }  from './in-memory-data.service';
 
-//import { RoomDetailComponent } from './room-detail.component';
 /*
  * Platform and Environment providers/directives/pipes
  */
@@ -23,6 +23,8 @@ import { Home } from './home';
 import { About } from './about';
 import { Maze } from './maze';
 import {RoomDetailComponent} from './maze';
+import {RoomDComponent} from './maze';
+import {MovieDisplayComponent} from './maze';
 import { NoContent } from './no-content';
 
 // Import diretives
@@ -46,6 +48,8 @@ const APP_PROVIDERS = [
     Home,
     NoContent,
     RoomDetailComponent,
+    RoomDComponent,
+    MovieDisplayComponent,
     XLarge
   ],
   imports: [ // import Angular's modules
@@ -57,7 +61,8 @@ const APP_PROVIDERS = [
   ],
   providers: [ // expose our Services and Providers into Angular's dependency injection
     ENV_PROVIDERS,
-    APP_PROVIDERS
+    APP_PROVIDERS,
+    HTTP_PROVIDERS, Configuration
   ]
 })
 export class AppModule {

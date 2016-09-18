@@ -1,18 +1,18 @@
 import {Room} from './room';
 import {RoomService} from './room.service';
+import {RandService} from './rand.service';
 //import { Component } from '@angular/core';
 import { Component, OnInit } from '@angular/core';
-
+import { DataService } from './dataService';
  
 
 
 @Component({
   selector: 'maze',
   template: `
+  <h1>Hello World..movies are where?.</h1>
+
   <h1> Mazeee </h1>
-
-    
-
      <ul class="heroes">
       <li *ngFor="let room of rooms"
         [class.selected]="room === selectedRoom"
@@ -21,6 +21,16 @@ import { Component, OnInit } from '@angular/core';
       </li>
     </ul>
      <my-room-detail [room]="selectedRoom"></my-room-detail>
+      <ul class="roomers">
+      <li *ngFor="let room of roomers"
+        [class.selected]="room === selectedRoom"
+        (click)="onSelect(room)">
+        <span class="badge">{{room.id}}</span> {{room.name}}
+      </li>
+    </ul>
+    SOME room, as object {{whatRoom}}
+    <movie-display>AAA</movie-display>
+    <my-room-d>BBB</my-room-d>
   `,
    styles: [`
     .selected {
@@ -71,15 +81,18 @@ import { Component, OnInit } from '@angular/core';
       border-radius: 4px 0 0 4px;
     }
   `],
-  providers: [RoomService]
+  providers: [RoomService,RandService]
 })
 
 export class Maze implements OnInit {
   
   rooms : Room[];
   //rooms= ROOMS;
+  roomers : Room[];
   selectedRoom: Room;
-  constructor(private roomService: RoomService) {
+  whatRoom : Room;
+  
+  constructor(private roomService: RoomService,private randService: RandService) {
 
   }
 getHeroes(): void {
@@ -87,6 +100,13 @@ getHeroes(): void {
   }
   ngOnInit(): void {
     this.getHeroes();
+      this.randService.getRoom().then(whatRoom => this.whatRoom = whatRoom);
+  
+        //  this._dataService
+        //     .GetSingle('Rushmore')
+        //     .subscribe((item: any) => {
+        //         this.received = item;
+        //     }, error => console.log(error));
   }
 
   onSelect(room: Room): void {
