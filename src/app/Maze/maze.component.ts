@@ -10,8 +10,8 @@ import { DataService } from './dataService';
 @Component({
   selector: 'maze',
   template: `
-  <h1>Hello World..movies are where?.</h1>
-
+  <h1>Hello World..movies are where?</h1>
+{{received}}
   <h1> Mazeee </h1>
      <ul class="heroes">
       <li *ngFor="let room of rooms"
@@ -81,7 +81,7 @@ import { DataService } from './dataService';
       border-radius: 4px 0 0 4px;
     }
   `],
-  providers: [RoomService,RandService]
+  providers: [RoomService,RandService,DataService]
 })
 
 export class Maze implements OnInit {
@@ -92,7 +92,7 @@ export class Maze implements OnInit {
   selectedRoom: Room;
   whatRoom : Room;
   
-  constructor(private roomService: RoomService,private randService: RandService) {
+  constructor(private roomService: RoomService,private randService: RandService,private dataService: DataService) {
 
   }
 getHeroes(): void {
@@ -101,12 +101,17 @@ getHeroes(): void {
   ngOnInit(): void {
     this.getHeroes();
       this.randService.getRoom().then(whatRoom => this.whatRoom = whatRoom);
-  
-        //  this._dataService
-        //     .GetSingle('Rushmore')
-        //     .subscribe((item: any) => {
-        //         this.received = item;
-        //     }, error => console.log(error));
+  //  this._dataService
+  //           .getSingle('4')
+  //           .subscribe((item: any) => {
+  //               this.received = item;
+  //           }, error => console.log(error));
+
+         this.dataService
+            .GetSingle('Rushmore')
+            .subscribe((item: any) => {
+                this.received = item;
+            }, error => console.log(error));
   }
 
   onSelect(room: Room): void {

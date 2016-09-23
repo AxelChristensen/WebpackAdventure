@@ -14,13 +14,13 @@ import { NameService } from './nameService';
 <span>{{received.description}}</span>
    
     <ul>
-      <li *ngFor="#name of received.connectingrooms">{{name}}</li>
+      <li *ngFor="#name of received.connectingroomsstubs">{{name}}</li>
     </ul>
      <ul class="heroes">
-      <li *ngFor="#name of received.connectingrooms"
+      <li *ngFor="#name of received.connectingroomsstubs"
         [class.selected]="room === selectedRoom"
-        (click)="onSelect(name)">
-        <span class="badge">{{name}}</span> {{name}}
+        (click)="onSelect(name.roomnum)">
+        <span class="badge">{{name.roomnum}}</span> {{name.description}}
       </li>
     </ul>
   `,

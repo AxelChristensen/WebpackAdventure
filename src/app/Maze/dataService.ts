@@ -9,16 +9,19 @@ export class DataService {
 
     private actionUrl: string;
     private headers: Headers;
+    private roomUrl: string;
     
     constructor(private _http: Http, private _configuration: Configuration) {
 
         this.actionUrl = _configuration.ServerWithApiUrl;
-
+        this.roomUrl = _configuration.ServerWithRoomUrl;
         this.headers = new Headers();
         this.headers.append('Content-Type', 'application/json');
         this.headers.append('Accept', 'application/json');
     }
-
+    public getRoom = (search: string): Observable<any> => {
+        return this._http.get(this.roomUrl + search).map(res => res.json());
+    }
     public GetAll = (): Observable<any> => {
         return this._http.get(this.actionUrl).map((response: Response) => <any>response.json());
     }
