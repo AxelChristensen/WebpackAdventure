@@ -13,9 +13,7 @@ import { NameService } from './nameService';
 <h2>{{title}}</h2>
 <span>{{received.description}}</span>
    
-    <ul>
-      <li *ngFor="#name of received.connectingroomsstubs">{{name}}</li>
-    </ul>
+   
      <ul class="heroes">
       <li *ngFor="#name of received.connectingroomsstubs"
         [class.selected]="room === selectedRoom"
@@ -33,7 +31,7 @@ import { NameService } from './nameService';
       margin: 0 0 2em 0;
       list-style-type: none;
       padding: 0;
-      width: 15em;
+      width: 150em;
     }
     .heroes li {
       cursor: pointer;
