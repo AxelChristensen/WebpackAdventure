@@ -4,33 +4,21 @@ import {RandService} from './rand.service';
 //import { Component } from '@angular/core';
 import { Component, OnInit } from '@angular/core';
 import { DataService } from './dataService';
- 
+
 
 
 @Component({
   selector: 'maze',
   template: `
-  <h1>Hello World..movies are where?</h1>
-{{received}}
-  <h1> Mazeee </h1>
-     <ul class="heroes">
-      <li *ngFor="let room of rooms"
-        [class.selected]="room === selectedRoom"
-        (click)="onSelect(room)">
-        <span class="badge">{{room.id}}</span> {{room.name}}
-      </li>
-    </ul>
-     <my-room-detail [room]="selectedRoom"></my-room-detail>
-      <ul class="roomers">
-      <li *ngFor="let room of roomers"
-        [class.selected]="room === selectedRoom"
-        (click)="onSelect(room)">
-        <span class="badge">{{room.id}}</span> {{room.name}}
-      </li>
-    </ul>
-    SOME room, as object {{whatRoom}}
-    <movie-display>AAA</movie-display>
-    <my-room-d>BBB</my-room-d>
+ 
+
+  <h1> Maze... </h1>
+     
+     
+    
+   
+    <room-display>AAA</room-display>
+  
   `,
    styles: [`
     .selected {
@@ -85,13 +73,13 @@ import { DataService } from './dataService';
 })
 
 export class Maze implements OnInit {
-  
+
   rooms : Room[];
   //rooms= ROOMS;
   roomers : Room[];
   selectedRoom: Room;
   whatRoom : Room;
-  
+
   constructor(private roomService: RoomService,private randService: RandService,private dataService: DataService) {
 
   }
@@ -101,17 +89,7 @@ getHeroes(): void {
   ngOnInit(): void {
     this.getHeroes();
       this.randService.getRoom().then(whatRoom => this.whatRoom = whatRoom);
-  //  this._dataService
-  //           .getSingle('4')
-  //           .subscribe((item: any) => {
-  //               this.received = item;
-  //           }, error => console.log(error));
 
-         this.dataService
-            .GetSingle('Rushmore')
-            .subscribe((item: any) => {
-                this.received = item;
-            }, error => console.log(error));
   }
 
   onSelect(room: Room): void {
