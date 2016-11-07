@@ -24,13 +24,8 @@ export class NameService {
     }
 
 
-    // constructor() {
-    //     this.names = ["Alice", "Aarav", "Martín", "Shannon", "Ariana", "Kai"];
-    // }
-    getNames()
-    {
-        return this.names;
-    }
+    
+   
     public GetSingle = (search: string): Observable<any> => {
         return this._http.get(this.actionUrl + 't=' + search).map(res => res.json());
     }

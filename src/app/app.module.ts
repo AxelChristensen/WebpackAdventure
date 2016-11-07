@@ -24,7 +24,7 @@ import { About } from './about';
 import { Maze } from './maze';
 import {RoomDetailComponent} from './maze';
 import {RoomDComponent} from './maze';
-import {MovieDisplayComponent} from './maze';
+import {RoomDisplayComponent} from './maze';
 import { NoContent } from './no-content';
 
 // Import diretives
@@ -49,7 +49,7 @@ const APP_PROVIDERS = [
     NoContent,
     RoomDetailComponent,
     RoomDComponent,
-    MovieDisplayComponent,
+    RoomDisplayComponent,
     XLarge
   ],
   imports: [ // import Angular's modules
